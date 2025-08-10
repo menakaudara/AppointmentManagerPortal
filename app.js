@@ -2,6 +2,7 @@ const CLIENT_ID = '271439530228-dmumnaoj2ar5d0e527h9ho9eqqn63noc.apps.googleuser
 const API_KEY = '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';     // Replace with your API Key
 const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
+
 let auth2;
 
 function signIn() {
@@ -12,9 +13,9 @@ function signIn() {
     }).then(function() {
       const authInstance = gapi.auth2.getAuthInstance();
       
-      // Use the popup method to sign in (no iframe)
+      // Use popup mode for OAuth
       authInstance.signIn({
-        prompt: 'select_account', // This ensures the user can select an account
+        prompt: 'select_account', // User can select account
         fetch_basic_profile: true // Fetch basic profile information
       }).then(function() {
         loadAppointmentForm();
