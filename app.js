@@ -20,6 +20,8 @@ function initClient() {
     } else {
       auth2.signIn().then(loadAppointmentForm);
     }
+  }, (error) => {
+    console.error("Error initializing Google API Client:", error);
   });
 }
 
