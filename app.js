@@ -12,9 +12,9 @@ function signIn() {
     }).then(function() {
       const authInstance = gapi.auth2.getAuthInstance();
       
-      // Use the popup method to sign in
+      // Use the popup method to sign in (no iframe)
       authInstance.signIn({
-        prompt: 'select_account', // Ensures the user sees account selection dialog
+        prompt: 'select_account', // This ensures the user can select an account
         fetch_basic_profile: true // Fetch basic profile information
       }).then(function() {
         loadAppointmentForm();
@@ -60,3 +60,4 @@ function createEvent(appointmentTime) {
     alert('Error booking appointment: ' + error.message);
   });
 }
+
