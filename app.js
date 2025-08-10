@@ -60,4 +60,3 @@ function createEvent(appointmentTime) {
     alert('Error booking appointment: ' + error.message);
   });
 }
-
