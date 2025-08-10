@@ -3,33 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Appointment</title>
+  <title>Book an Appointment</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Content Security Policy (CSP) Meta Tag -->
-<meta http-equiv="Content-Security-Policy" content="
-  default-src 'self'; 
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com https://apis.google.com https://www.gstatic.com;
-  style-src 'self' 'unsafe-inline'; 
-  connect-src 'self' https://accounts.google.com https://www.googleapis.com;
-  frame-src https://accounts.google.com https://apis.google.com;">
-
-  
-  
+  <!-- CSP Meta Tag (Allow Google Scripts) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com https://apis.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline';">
 </head>
 <body>
-  <h1>Book an Appointment 8</h1>
-
-  <!-- Google Sign-In Button -->
-  <button id="signin-button" onclick="signIn()">Sign in with Google</button>
-
-  <div id="appointment-form" style="display:none;">
-    <h3>Choose Appointment Time</h3>
-    <form id="appointmentForm">
-      <input type="datetime-local" id="appointmentTime" required>
-      <button type="submit">Book Appointment</button>
-    </form>
+  <div id="app">
+    <h1>Book an Appointment 9</h1>
+    <button id="signin-button" onclick="signIn()">Sign in with Google</button>
+    <div id="appointment-form" style="display:none;">
+      <h3>Select Appointment Time</h3>
+      <form id="appointmentForm">
+        <input type="datetime-local" id="appointmentTime" required />
+        <button type="submit">Book Appointment</button>
+      </form>
+    </div>
   </div>
-
+  
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="app.js"></script>
 </body>

@@ -2,7 +2,6 @@ const CLIENT_ID = '271439530228-dmumnaoj2ar5d0e527h9ho9eqqn63noc.apps.googleuser
 const API_KEY = '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';     // Replace with your API Key
 const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
-
 let auth2;
 
 function signIn() {
@@ -13,14 +12,14 @@ function signIn() {
     }).then(function() {
       const authInstance = gapi.auth2.getAuthInstance();
       
-      // Use popup mode for OAuth
+      // Sign in via popup (avoid iframe sandbox issues)
       authInstance.signIn({
-        prompt: 'select_account', // User can select account
-        fetch_basic_profile: true // Fetch basic profile information
+        prompt: 'select_account',
+        fetch_basic_profile: true
       }).then(function() {
         loadAppointmentForm();
       }).catch(function(error) {
-        console.error('Error signing in: ', error);
+        console.error('Sign-in failed: ', error);
       });
     });
   });
@@ -30,7 +29,7 @@ function loadAppointmentForm() {
   document.getElementById('signin-button').style.display = 'none';
   document.getElementById('appointment-form').style.display = 'block';
   
-  document.getElementById('appointmentForm').addEventListener('submit', function (event) {
+  document.getElementById('appointmentForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const appointmentTime = document.getElementById('appointmentTime').value;
     createEvent(appointmentTime);
