@@ -11,8 +11,15 @@ function signIn() {
       scope: SCOPES,
     }).then(function() {
       const authInstance = gapi.auth2.getAuthInstance();
-      authInstance.signIn({ prompt: 'select_account', fetch_basic_profile: true }).then(function() {
+      
+      // Use the popup method to sign in
+      authInstance.signIn({
+        prompt: 'select_account', // Ensures the user sees account selection dialog
+        fetch_basic_profile: true // Fetch basic profile information
+      }).then(function() {
         loadAppointmentForm();
+      }).catch(function(error) {
+        console.error('Error signing in: ', error);
       });
     });
   });
