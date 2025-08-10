@@ -5,23 +5,16 @@ const SCOPES = 'https://www.googleapis.com/auth/calendar';
 let auth2;
 
 function signIn() {
-  gapi.load('client:auth2', initClient);
-}
-
-function initClient() {
-  gapi.client.init({
-    apiKey: API_KEY,
-    clientId: CLIENT_ID,
-    scope: SCOPES,
-  }).then(() => {
-    auth2 = gapi.auth2.getAuthInstance();
-    if (auth2.isSignedIn.get()) {
-      loadAppointmentForm();
-    } else {
-      auth2.signIn().then(loadAppointmentForm);
-    }
-  }, (error) => {
-    console.error("Error initializing Google API Client:", error);
+  gapi.load('client:auth2', function() {
+    gapi.auth2.init({
+      client_id: CLIENT_ID,
+      scope: SCOPES,
+    }).then(function() {
+      const authInstance = gapi.auth2.getAuthInstance();
+      authInstance.signIn({ prompt: 'select_account', fetch_basic_profile: true }).then(function() {
+        loadAppointmentForm();
+      });
+    });
   });
 }
 
