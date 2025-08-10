@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Book an Appointment</h1>
+
+  <!-- Google Sign-In Button -->
+  <button id="signin-button" onclick="signIn()">Sign in with Google</button>
+
+  <div id="appointment-form" style="display:none;">
+    <h3>Choose Appointment Time</h3>
+    <form id="appointmentForm">
+      <input type="datetime-local" id="appointmentTime" required>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
